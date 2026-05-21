@@ -24,3 +24,64 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.timeline-cube {
+  position: relative;
+  width: 2.25rem;
+  height: 2.25rem;
+  transform-style: preserve-3d;
+  animation: timeline-cube-spin 5.2s linear infinite;
+}
+
+.timeline-cube-face {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.18)
+  );
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.12);
+}
+
+.timeline-cube-front {
+  transform: translateZ(1.125rem);
+}
+
+.timeline-cube-back {
+  transform: rotateY(180deg) translateZ(1.125rem);
+}
+
+.timeline-cube-right {
+  transform: rotateY(90deg) translateZ(1.125rem);
+}
+
+.timeline-cube-left {
+  transform: rotateY(-90deg) translateZ(1.125rem);
+}
+
+.timeline-cube-top {
+  transform: rotateX(90deg) translateZ(1.125rem);
+}
+
+.timeline-cube-bottom {
+  transform: rotateX(-90deg) translateZ(1.125rem);
+}
+
+@keyframes timeline-cube-spin {
+  from {
+    transform: rotateX(-18deg) rotateY(0deg) rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateX(-18deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-cube {
+    animation: none;
+    transform: rotateX(-18deg) rotateY(32deg);
+  }
+}
